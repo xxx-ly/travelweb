@@ -1,0 +1,27 @@
+$bg_color:(
+    white:#fff,
+    black:#000,
+    header:#8cadbd,
+    gray:#828282,
+);
+
+$txt_color:(
+    primary:#55B7CF,
+    second:#333333,
+    third:#BDBDBD,
+    white:#fff,
+);
+
+//背景顏色
+@each $name, $background in $bg_color {
+    .bg_#{$name} {
+        background: $background !important;
+    }
+}
+
+//字體顏色
+@each $name, $value in $txt_color {
+    .txt_#{$name} {
+        color: $value !important;
+    }
+}

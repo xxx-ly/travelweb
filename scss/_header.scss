@@ -1,0 +1,51 @@
+.header{
+    @include d_f(flex,center,space-between);
+    background: map-get($bg_color , header);
+    color:map-get($txt_color , white );
+    height: 80px;
+    padding: 0 80px;
+
+    h1{
+        margin-right: 40px;
+    }
+    //.header__block
+    &__block{
+        @include d_f(flex, center, flex-start);
+    }
+    //.header__sel
+    &__sel{
+        @include d_f(flex, center, flex-start);
+        li{
+            @extend %hand;
+            position: relative;
+            padding: 0 10px;
+
+            &.--on::after{
+                @include pos_a(lrb,0,0,-10px);
+                content:"...";
+                font-size: 16px;
+                text-align: center;
+            }
+
+            @include hoverHandler{
+                opacity: .5;
+            }
+        }
+        li + li::before{
+            @include pos_a(l,0);
+            content:'';
+            display: block;
+            width: 1px;
+            height: 100%;
+            background: map-get($bg_color , white);
+        }
+
+        .icon_search{
+            @extend %hand;
+            display: block;
+            width: 16px;
+            height: 16px;
+            background: url(../images/icon_search.svg)no-repeat center center/contain;
+        }
+    }
+}

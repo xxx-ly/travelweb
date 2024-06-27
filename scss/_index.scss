@@ -1,0 +1,65 @@
+.banner{
+    @include d_f(flex,center,center);
+    position: relative;
+    height: 996px;
+    border-radius: 0 0 50px 50px;
+    background: url(../images/view_5.jpg)no-repeat center center/cover;
+    h3{
+        color: map-get($txt_color , white);
+        font-weight: 600;
+        font-size: 42px;
+        line-height: 50px;
+        text-align: center;
+        div{
+            font-weight:500;
+            font-size: 18px;
+            line-height: 20px;
+            margin-top: 10px;
+        }
+    }
+    //.banner__pageSel
+    &__pageSel{
+        @include pos_a(t,(calc(100% - 43px)));
+        @include d_f(flex,center,center);
+        padding: 10px 50px;
+        border-radius: 50px;
+        background: map-get($bg_color , white);
+
+        li{
+            @extend %hand;
+            text-align: center;
+            position: relative;
+            padding: 0 50px;
+
+            &::before{
+                content:'';
+                display: block;
+                width: 50px;
+                height: 50px;
+                background-position: center center;
+                background-repeat: no-repeat;
+                background-size: contain;
+            }
+
+            &.--history::before{background-image: url(../images/icon_history.svg);}
+            &.--outdoor::before{background-image: url(../images/icon_outdoor.svg);}
+            &.--view::before{background-image: url(../images/icon_view.svg);}
+            &.--food::before{background-image: url(../images/icon_food.svg);}
+            &.--temple::before{background-image: url(../images/icon_temple.svg);}
+            &.--train::before{background-image: url(../images/icon_train.svg);}
+
+            div{margin-top: 10px;}
+
+            @include hoverHandler{
+                opacity: .5;
+            }
+        }
+        li + li::after{
+            @include pos_a(tbl,10px,10px,0);
+            content:'';
+            display: block;
+            width: 1px;
+            background: map-get($bg_color , gray);
+        }
+    }
+}
