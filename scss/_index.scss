@@ -1,3 +1,7 @@
+body{
+    @include scrollbar(hidden , auto);
+    background: url(../images/bg_pic.jpg)repeat-y center center/cover;
+}
 .banner{
     @include d_f(flex,center,center);
     position: relative;
@@ -60,6 +64,119 @@
             display: block;
             width: 1px;
             background: map-get($bg_color , gray);
+        }
+    }
+}
+
+.view{
+    @include d_f(flex,flex-start,center);
+    margin-top: 200px;
+
+    //.view__txt
+    &__txt{
+        position: relative;
+        padding-top: 50px;
+        h3{
+            font-size: 35px;
+            font-weight: 600;
+            color:map-get($txt_color ,primary);
+            letter-spacing: 10px;
+        }
+        p{
+            letter-spacing: 5px;
+            margin-top: 10px;
+            line-height: 20px;
+        }
+        &::before{
+            @include pos_a(tl,calc(100% + 50px),100px);
+            content:'';
+            display: block;
+            width: 1px;
+            height: 200px;
+            background: map-get($txt_color , primary);
+        }
+
+        &::after{
+            @include pos_a(tr,calc(100% + 100px),0);
+            content:'';
+            display: block;
+            width: 375px;
+            height: 110px;
+            background:url(../images/icon_Taiwan.png)no-repeat center center/contain;
+
+        }
+    }
+    //.view__pic
+    &__pic{
+        @include d_f(flex, center, center);
+        //.view__pic__item
+        &__item{
+            @extend %hand;
+            position: relative;
+            width: 290px;
+            height: 420px;
+            border-radius: 10px;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center center;
+
+            &.--one{background-image: url(../images/view_1.jpg);}
+            &.--two{background-image: url(../images/view_2.jpg);}
+            &.--three{background-image: url(../images/view_3.jpg);}
+            &.--four{background-image: url(../images/view_4.jpg);}
+
+            .viewInfo{
+                @include pos_a(tl,calc(100% - 95px) , 50px);
+                display: none;
+                width: 340px;
+                height: 190px;
+                padding: 20px;
+                background: map-get($bg_color , white);
+                border-radius: 10px;
+                //.viewInfo__title
+                &__title{
+                    @include d_f(flex,center,flex-start);
+                    margin-bottom: 10px;
+                    span{
+                        color:map-get($txt_color , primary);
+                        font-size: 18px;
+                        font-weight: 600;
+                        margin-right: 10px;
+                    }
+                    i{
+                        @include d_f(flex,center,flex-start);
+                        background: map-get($bg_color , primary);
+                        color:map-get($txt_color , white);
+                        padding:5px 10px;
+                        border-radius:50px;
+                        &::before{
+                            content:'';
+                            display: inline-block;
+                            width: 15px;
+                            height: 15px;
+                            background: url(../images/icon_location.svg)no-repeat center center/contain;
+                            margin-right: 3px;
+                        }
+                    }
+                }
+                //.viewInfo__content
+                &__content{
+                    font-size: 15px;
+                    font-weight: 400;
+                    line-height: 22px;
+                }
+            }
+            @include hoverHandler {
+                transform: translate(-20px, -20px);
+                z-index: 10;
+                .viewInfo{
+                    display: block;
+                }
+            }
+
+        }
+        li + li{
+            margin-left: 25px;
         }
     }
 }
