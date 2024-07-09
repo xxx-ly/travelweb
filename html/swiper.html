@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body {
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel {
+  width: 500px;
+  margin: 0 auto;
+  border: 2px dashed #000;
+  background-color: #fff;
+}
+.container{
+    display: flex;
+}
+.content {
+flex: 1 1 100%;
+  height: 100px;
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+  line-height: 100px;
+  text-align: center;
+}
+
+.red {
+  background-color: red;
+}
+.yellow {
+  background-color: rgb(209, 209, 0);
+}
+.blue {
+  background-color: blue;
+}
+.purple {
+  background-color: purple;
+}
+
+.btnContainer {
+  margin: 10px auto;
+}
+.btn {
+  width: 80px;
+  height: 40px;
+  font-size: 30px;
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <div class="container">
+            <div class="content red">1</div>
+            <div class="content yellow">2</div>
+            <div class="content blue">3</div>
+            <div class="content purple">4</div>
+        </div>
+    </div>
+    <div class="btnContainer">
+        <button class="btn btn-prev">&larr;</button>
+        <button class="btn btn-next">&rarr;</button>
+    </div>
+</body>
+
+<script>
+    const contentShow = 2;
+    const moveSpeed = 500;
+    
+    const carousel = document.querySelector(".carousel");
+    const container = document.querySelector(".container");
+    const content = document.querySelectorAll(".content");
+    const preBtn = document.querySelector(".btn-prev");
+    const nextBtn = document.querySelector(".btn-next");
+    const contentComputeStyle = getComputedStyle(content);
+    console.log(content);
+
+    // 取得輪播內容物個數
+    const contentAmount = document.querySelectorAll(".content").length;
+
+    let distanceBetweenContent;
+
+    // 輪播容器之位置
+    let position = 0;
+
+    // 全域變數，管理輪播是否可以切換
+    let disableMove;
+
+    // 設定輪播所需的style，也可以在css中直接新增
+    carousel.style.overflow = "hidden";
+    carousel.style.position = "relative";
+    container.style.display = "flex";
+    container.style.position = "absolute";
+
+    // 設定輪播切換的動畫時間
+    container.style.transition = `transform ${moveSpeed}ms`;
+
+    const setContentWidth = function(){
+      const carouselWidth = carousel.offsetWidth;
+
+      const gap = parseInt(contentComputeStyle["margin-right"]);
+
+      const contentWidth = 
+      (carouselWidth- gap * Math.ceil(contentToShow -1))/ contentToShow;
+
+      allContent.forEach((el) => (el.style.width = `${contentWidth}px`));
+
+      distanceBetweenContent =
+        content.nextElementSibling.offsetLeft - content.offsetLeft;
+    };
+
+    const setContentHeight = function(){
+      carousel.style.height = contentComputStyle.height;
+    }
+
+</script>
+
+</html>
